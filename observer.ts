@@ -78,3 +78,4 @@ const subject = new Subject();
 
 const aObserver = new AObserver(subject);
 const bObserver = new BObserver(subject);
+subject.setState(1);

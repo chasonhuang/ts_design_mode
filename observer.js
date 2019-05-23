@@ -87,3 +87,4 @@ var BObserver = /** @class */ (function (_super) {
 var subject = new Subject();
 var aObserver = new AObserver(subject);
 var bObserver = new BObserver(subject);
+subject.setState(1);
