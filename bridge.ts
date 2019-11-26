@@ -15,7 +15,7 @@ enum ColorEnum {
 
 // 颜色的接口
 interface ColorInterface {
-  getColor: () => {};
+  getColor: () => void;
 }
 
 // 类型的抽象类
@@ -45,7 +45,6 @@ class ShirtProducer extends AbstractClothesClass {
 }
 
 // 颜色的实现类;
-
 class BlackColor implements ColorInterface {
   public getColor() {
     return "black";
@@ -91,7 +90,12 @@ class CloseShop {
       default:
         throw new Error("not support color" + color);
     }
+    return clothes;
   }
 }
 
-CloseShop.getInstance().getClothes(ClothesTypeEnum.Shirt, ColorEnum.Black);
+const clothes = CloseShop.getInstance().getClothes(
+  ClothesTypeEnum.Shirt,
+  ColorEnum.Black
+);
+console.log(clothes);

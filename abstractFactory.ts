@@ -54,7 +54,7 @@ class FactoryMaker {
   }
 }
 
-class IAbstractSkill {
+abstract class IAbstractSkill {
   getMainSkill() {}
   getSecondarySkill() {}
 }

@@ -5,7 +5,7 @@ enum NodeTypeEnum {
   TextFile = "text"
 }
 
-// Node抽象类
+// Node抽象类(Component)
 abstract class AbstractNode {
   protected name: string;
   protected type: NodeTypeEnum;
@@ -15,7 +15,7 @@ abstract class AbstractNode {
   public abstract getFileDeep(name: string): AbstractNode;
 }
 
-// 文件和文件夹基础类
+// 文件和文件夹基础类(Leaf)
 class BasicFile extends AbstractNode {
   public add(file: BasicFile): BasicFile {
     console.error("文件类型不支持添加");

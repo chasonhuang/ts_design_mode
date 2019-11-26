@@ -16,7 +16,7 @@ interface IFontFamily {
 
 export enum FontFamilyEnum {
   Song = "宋体",
-  You = "幼圆"
+  Hei = "黑体"
 }
 
 // 默认构建方法
@@ -38,7 +38,7 @@ class FontFamilyClass implements IFontFamily {
   }
 }
 
-// 应用
+// 基础类
 class CharacterRegistry {
   private static _instance: CharacterRegistry;
   private _language: LanguageClass;
@@ -85,7 +85,7 @@ class SaveCharacters {
     for (let i = 0; i < 200000; i++) {
       // 模拟随机生成类型
       const type =
-        Math.random() > 0.5 ? FontFamilyEnum.Song : FontFamilyEnum.You;
+        Math.random() > 0.5 ? FontFamilyEnum.Song : FontFamilyEnum.Hei;
       charactersList.push(new FlyweightCharacterClass(i, type));
     }
     return charactersList;

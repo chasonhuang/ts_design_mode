@@ -3,7 +3,7 @@ exports.__esModule = true;
 var FontFamilyEnum;
 (function (FontFamilyEnum) {
     FontFamilyEnum["Song"] = "\u5B8B\u4F53";
-    FontFamilyEnum["You"] = "\u5E7C\u5706";
+    FontFamilyEnum["Hei"] = "\u9ED1\u4F53";
 })(FontFamilyEnum = exports.FontFamilyEnum || (exports.FontFamilyEnum = {}));
 // 默认构建方法
 var LanguageClass = /** @class */ (function () {
@@ -19,7 +19,7 @@ var FontFamilyClass = /** @class */ (function () {
     }
     return FontFamilyClass;
 }());
-// 应用
+// 基础类
 var CharacterRegistry = /** @class */ (function () {
     function CharacterRegistry() {
         this._fontFamilyMap = new Map();
@@ -34,17 +34,13 @@ var CharacterRegistry = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(CharacterRegistry.prototype, "language", {
-        get: function () {
-            if (!this._language) {
-                // 懒汉策略，延时创建对象
-                this._language = new LanguageClass("Chinese", "中文");
-            }
-            return this._language;
-        },
-        enumerable: true,
-        configurable: true
-    });
+    CharacterRegistry.prototype.language = function () {
+        if (!this._language) {
+            // 懒汉策略，延时创建对象
+            this._language = new LanguageClass("Chinese", "中文");
+        }
+        return this._language;
+    };
     CharacterRegistry.prototype.getFontFamilyByType = function (type) {
         // 懒汉策略，延时创建对象
         if (!this._fontFamilyMap.has(type)) {
@@ -69,7 +65,7 @@ var SaveCharacters = /** @class */ (function () {
         var charactersList = [];
         for (var i = 0; i < 200000; i++) {
             // 模拟随机生成类型
-            var type = Math.random() > 0.5 ? FontFamilyEnum.Song : FontFamilyEnum.You;
+            var type = Math.random() > 0.5 ? FontFamilyEnum.Song : FontFamilyEnum.Hei;
             charactersList.push(new FlyweightCharacterClass(i, type));
         }
         return charactersList;
